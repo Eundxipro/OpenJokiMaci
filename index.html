@@ -5,22 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>openjokimaci - Jasa Joki Tugas Cepat & Terpercaya</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Custom styles for non-monotonous background and elegant fonts */
+        /* Definisi font Perpetua */
+        /* PENTING: Untuk menggunakan font Perpetua, Anda perlu mengunggah file font (Perpetua-Regular.woff2, Perpetua-Regular.woff, Perpetua-Bold.woff2, Perpetua-Bold.woff)
+           ke server Anda dan mengganti 'path/to/fonts/' dengan URL yang benar. */
+        @font-face {
+            font-family: 'Perpetua Regular'; /* Nama yang Anda berikan untuk font ini */
+            src: url('path/to/fonts/Perpetua-Regular.woff2') format('woff2'),
+                 url('path/to/fonts/Perpetua-Regular.woff') format('woff');
+            font-weight: normal; /* Sesuaikan dengan bobot font yang Anda gunakan */
+            font-style: normal;
+            font-display: swap; /* Direkomendasikan untuk performa */
+        }
+        @font-face {
+            font-family: 'Perpetua Bold'; /* Jika Anda juga memiliki versi bold */
+            src: url('path/to/fonts/Perpetua-Bold.woff2') format('woff2'),
+                 url('path/to/fonts/Perpetua-Bold.woff') format('woff');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Custom styles for background, font, and new soft purple colors */
         body {
-            font-family: 'Inter', sans-serif;
+            /* Gunakan font Perpetua sebagai prioritas, dengan fallback Inter dan sistem font lainnya */
+            font-family: 'Perpetua Regular', 'Inter', Helvetica, Arial, Verdana, serif;
             /* Jatiluwih background image */
             background-image: url('https://imgur.com/8hd2eiY.png');
             background-size: cover; /* Cover the entire viewport */
             background-attachment: fixed; /* Keep background fixed when scrolling */
             background-position: center; /* Center the background image */
             background-repeat: no-repeat; /* Do not repeat the image */
-            color: #2B1700; /* Default text color */
+            color: #000000; /* Default text color: Black for all text */
         }
 
-        /* Overlay for the background image to ensure text readability */
+        /* Terapkan font bold untuk judul dan pastikan warnanya hitam */
+        h1, h2, h3 {
+            font-family: 'Perpetua Bold', 'Inter', Helvetica, Arial, Verdana, serif;
+            font-weight: bold;
+            color: #000000; /* Judul juga diubah menjadi hitam */
+        }
+
+        /* Overlay for the background image to ensure text readability with soft purple tint */
         body::before {
             content: '';
             position: fixed;
@@ -28,51 +55,41 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(253, 252, 239, 0.7), rgba(253, 252, 239, 0.9)); /* Subtle transparent gradient overlay */
+            /* Subtle transparent gradient overlay for modern aesthetic with soft purple tint */
+            background: linear-gradient(to bottom, rgba(245, 245, 250, 0.7), rgba(245, 245, 250, 0.9)); /* #F5F5FA is a very light purple tint */
             z-index: -1; /* Place it behind the content */
         }
 
-        /* Text colors for branding */
-        .text-brown-dark { color: #2B1700; }
-        .text-brown-medium { color: #351E10; }
-        .text-brown-light { color: #362312; }
-        /* Background colors for branding */
-        .bg-brown-dark { background-color: #2B1700; }
-        .bg-brown-medium { background-color: #351E10; }
-        .bg-brown-light { background-color: #362312; }
+        /* New soft purple color palette for branding - used for specific elements like links/buttons */
+        .text-purple-darkest { color: #483D8B; } /* DarkSlateBlue */
+        .text-purple-medium { color: #6A5ACD; } /* SlateBlue */
+        .bg-purple-darkest { background-color: #483D8B; } /* DarkSlateBlue */
+        .bg-purple-medium { background-color: #6A5ACD; } /* SlateBlue */
 
-        /* Smooth scroll for navigation */
+        /* Smooth scroll for navigation links */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Custom button styles for social media links */
+        /* Custom button styles for social media links with appropriate colors */
         .btn-instagram {
             background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
             color: white;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            transition: transform 0.2s; /* Smooth hover effect */
         }
         .btn-instagram:hover {
             transform: translateY(-2px);
         }
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-        }
+        /* WhatsApp button style removed as it's no longer used */
 
-        /* Responsive menu for mobile */
+        /* Responsive menu for mobile devices */
         @media (max-width: 768px) {
             .mobile-menu {
                 display: none;
             }
             .mobile-menu.active {
-                display: flex;
+                display: flex; /* Show menu when active */
             }
         }
     </style>
@@ -82,20 +99,20 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://imgur.com/t18mKfL.png" alt="openjokimaci Logo" class="h-10 md:h-12 rounded-lg"
-                     onerror="this.onerror=null;this.src='https://placehold.co/100x40/E0D8C8/2B1700?text=Logo';">
-                <span class="ml-3 text-lg md:text-xl font-semibold text-brown-dark">openjokimaci</span>
+                     onerror="this.onerror=null;this.src='https://placehold.co/100x40/E0D8C8/483D8B?text=Logo';">
+                <span class="ml-3 text-lg md:text-xl font-semibold text-purple-darkest">openjokimaci</span>
             </div>
 
             <nav class="hidden md:flex space-x-6">
-                <a href="#beranda" class="text-brown-medium hover:text-brown-dark font-medium text-sm md:text-base transition duration-300">Beranda</a>
-                <a href="#tentang-kami" class="text-brown-medium hover:text-brown-dark font-medium text-sm md:text-base transition duration-300">Tentang Kami</a>
-                <a href="#layanan" class="text-brown-medium hover:text-brown-dark font-medium text-sm md:text-base transition duration-300">Layanan</a>
-                <a href="#testimoni" class="text-brown-medium hover:text-brown-dark font-medium text-sm md:text-base transition duration-300">Testimoni</a>
-                <a href="#kontak" class="text-brown-medium hover:text-brown-dark font-medium text-sm md:text-base transition duration-300">Kontak</a>
+                <a href="#beranda" class="text-purple-medium hover:text-purple-darkest font-medium text-sm md:text-base transition duration-300">Beranda</a>
+                <a href="#tentang-kami" class="text-purple-medium hover:text-purple-darkest font-medium text-sm md:text-base transition duration-300">Tentang Kami</a>
+                <a href="#layanan" class="text-purple-medium hover:text-purple-darkest font-medium text-sm md:text-base transition duration-300">Layanan</a>
+                <a href="#testimoni" class="text-purple-medium hover:text-purple-darkest font-medium text-sm md:text-base transition duration-300">Testimoni</a>
+                <a href="#kontak" class="text-purple-medium hover:text-purple-darkest font-medium text-sm md:text-base transition duration-300">Kontak</a>
             </nav>
 
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-brown-dark focus:outline-none">
+                <button id="mobile-menu-button" class="text-purple-darkest focus:outline-none">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -104,28 +121,28 @@
         </div>
 
         <nav id="mobile-menu" class="mobile-menu flex-col items-center bg-white absolute w-full left-0 py-4 shadow-lg rounded-b-lg md:hidden">
-            <a href="#beranda" class="block py-2 text-brown-medium hover:text-brown-dark font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Beranda</a>
-            <a href="#tentang-kami" class="block py-2 text-brown-medium hover:text-brown-dark font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Tentang Kami</a>
-            <a href="#layanan" class="block py-2 text-brown-medium hover:text-brown-dark font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Layanan</a>
-            <a href="#testimoni" class="block py-2 text-brown-medium hover:text-brown-dark font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Testimoni</a>
-            <a href="#kontak" class="block py-2 text-brown-medium hover:text-brown-dark font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Kontak</a>
+            <a href="#beranda" class="block py-2 text-purple-medium hover:text-purple-darkest font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Beranda</a>
+            <a href="#tentang-kami" class="block py-2 text-purple-medium hover:text-purple-darkest font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Tentang Kami</a>
+            <a href="#layanan" class="block py-2 text-purple-medium hover:text-purple-darkest font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Layanan</a>
+            <a href="#testimoni" class="block py-2 text-purple-medium hover:text-purple-darkest font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Testimoni</a>
+            <a href="#kontak" class="block py-2 text-purple-medium hover:text-purple-darkest font-medium text-base transition duration-300" onclick="toggleMobileMenu()">Kontak</a>
         </nav>
     </header>
 
     <main class="pt-24 pb-12 px-4 md:px-8 lg:px-16">
         <section id="beranda" class="mb-16 bg-white/90 p-8 rounded-xl shadow-lg backdrop-blur-sm">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-2xl md:text-4xl font-bold mb-6 text-brown-dark leading-tight">
+                <h1 class="text-2xl md:text-4xl font-bold mb-6">
                     Butuh Bantuan Kerjakan Tugas? Serahkan ke openjokimaci!
                 </h1>
-                <p class="text-base md:text-lg mb-8 text-brown-medium">
+                <p class="text-base md:text-lg mb-8">
                     @openjokimaci adalah layanan joki tugas cepat, murah, dan terpercaya untuk pelajar & mahasiswa yang ingin tugasnya beres tanpa ribet.
                     Kami siap membantu menyelesaikan berbagai jenis tugas, mulai dari makalah, presentasi, laporan hingga tugas harian. Semua dikerjakan dengan teliti dan diselesaikan tepat waktu sesuai deadline.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                     <div class="bg-gray-50/80 p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3 text-brown-dark">🔥 Kenapa Pilih Kami?</h3>
-                        <ul class="list-none space-y-2 text-brown-medium">
+                        <h3 class="text-xl font-semibold mb-3">👀 Kenapa Pilih Kami?</h3>
+                        <ul class="list-none space-y-2">
                             <li>✅ Harga fleksibel & bisa disesuaikan</li>
                             <li>✅ Respon cepat dan pelayanan ramah</li>
                             <li>✅ Hasil rapi, sesuai permintaan</li>
@@ -133,8 +150,8 @@
                         </ul>
                     </div>
                     <div class="flex flex-col items-center justify-center bg-gray-50/80 p-6 rounded-lg shadow-sm">
-                        <p class="text-lg font-medium text-brown-dark mb-4">Siap bantu tugasmu sekarang!</p>
-                        <a href="#kontak" class="bg-brown-dark text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-brown-medium transition duration-300 shadow-md">
+                        <p class="text-lg font-medium mb-4">Siap bantu tugasmu sekarang!</p>
+                        <a href="#kontak" class="bg-purple-darkest text-white px-6 py-3 rounded-full text-base font-semibold hover:bg-purple-medium transition duration-300 shadow-md">
                             Hubungi Kami
                         </a>
                     </div>
@@ -144,8 +161,8 @@
 
         <section id="tentang-kami" class="mb-16 bg-white/90 p-8 rounded-xl shadow-lg backdrop-blur-sm">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-brown-dark">Tentang Kami</h2>
-                <p class="text-base md:text-lg text-brown-medium leading-relaxed">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Tentang Kami</h2>
+                <p class="text-base md:text-lg leading-relaxed">
                     openjokimaci adalah penyedia jasa joki tugas yang siap membantu pelajar dan mahasiswa menyelesaikan tugas-tugas mereka dengan cepat, rapi, dan sesuai permintaan. Kami hadir sebagai solusi untuk kamu yang sedang kewalahan, sibuk, atau butuh bantuan tambahan agar tugas selesai tepat waktu tanpa stres. Dengan pelayanan yang ramah, harga fleksibel, dan proses pemesanan yang mudah, kami berkomitmen untuk memberikan hasil terbaik dan kepuasan pelanggan di setiap order.
                 </p>
             </div>
@@ -153,11 +170,11 @@
 
         <section id="layanan" class="mb-16 bg-white/90 p-8 rounded-xl shadow-lg backdrop-blur-sm">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center text-brown-dark">Layanan Kami</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Layanan Kami</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-xl font-semibold mb-4 text-brown-dark">📝 Jenis Tugas yang Kami Terima:</h3>
-                        <ul class="list-disc list-inside space-y-2 text-base md:text-lg text-brown-medium">
+                        <h3 class="text-xl font-semibold mb-4">📝 Jenis Tugas yang Kami Terima:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-base md:text-lg">
                             <li>Makalah & Essay</li>
                             <li>PowerPoint / Presentasi</li>
                             <li>Tugas Sekolah / Kuliah (harian, mingguan, deadline mepet)</li>
@@ -167,8 +184,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold mb-4 text-brown-dark">⚙️ Cara Kerja Kami:</h3>
-                        <ol class="list-decimal list-inside space-y-3 text-base md:text-lg text-brown-medium">
+                        <h3 class="text-xl font-semibold mb-4">⚙️ Cara Kerja Kami:</h3>
+                        <ol class="list-decimal list-inside space-y-3 text-base md:text-lg">
                             <li>
                                 <span class="font-semibold">Kirim Detail Tugas:</span> Hubungi kami via DM Instagram atau WhatsApp dan jelaskan jenis tugas yang ingin dijoki.
                             </li>
@@ -189,8 +206,8 @@
 
         <section id="testimoni" class="mb-16 bg-white/90 p-8 rounded-xl shadow-lg backdrop-blur-sm">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-brown-dark">Testimoni Pelanggan</h2>
-                <blockquote class="italic text-base md:text-lg text-brown-medium leading-relaxed bg-gray-50/80 p-6 rounded-lg shadow-sm">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6">Testimoni Pelanggan</h2>
+                <blockquote class="italic text-base md:text-lg leading-relaxed bg-gray-50/80 p-6 rounded-lg shadow-sm">
                     "Banyak pelanggan merasa puas dengan layanan openjokimaci karena hasil tugas yang rapi, pengerjaan cepat, dan komunikasi yang mudah. Admin dikenal fast respon, ramah, dan sangat membantu, sehingga proses order jadi nyaman dan tanpa ribet. Tak sedikit yang kembali order karena puas dengan pelayanan dan hasilnya!"
                 </blockquote>
             </div>
@@ -198,8 +215,8 @@
 
         <section id="kontak" class="mb-16 bg-white/90 p-8 rounded-xl shadow-lg backdrop-blur-sm">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 text-brown-dark">Hubungi Kami</h2>
-                <p class="text-base md:text-lg mb-8 text-brown-medium">
+                <h2 class="text-2xl md:text-3xl font-bold mb-6">📞 Cara Order dan Hubungi Kami</h2>
+                <p class="text-base md:text-lg mb-8">
                     Punya tugas yang ingin dijoki? Langsung aja hubungi kami melalui salah satu kontak di bawah ini:
                 </p>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-6">
@@ -213,13 +230,8 @@
                         <i class="fab fa-instagram mr-3 text-xl"></i>
                         <span>DM Instagram (@deayunitaa19)</span>
                     </a>
-                    <a href="https://wa.me/6289685770834" target="_blank" rel="noopener noreferrer"
-                       class="btn-whatsapp flex items-center px-6 py-3 rounded-full text-base font-semibold shadow-md hover:scale-105 transition duration-300">
-                        <i class="fab fa-whatsapp mr-3 text-xl"></i>
-                        <span>Live Chat WhatsApp (089685770834)</span>
-                    </a>
-                </div>
-                <p class="text-base md:text-lg mt-8 text-brown-medium">
+                    </div>
+                <p class="text-base md:text-lg mt-8">
                     Kami siap bantu kamu 24 jam dengan pelayanan cepat, ramah, dan profesional.
                     Jangan ragu tanya-tanya dulu, kami selalu terbuka buat diskusi!
                 </p>
@@ -227,7 +239,7 @@
         </section>
     </main>
 
-    <footer class="bg-brown-dark text-white py-6 px-4 md:px-8 lg:px-16 text-center rounded-t-xl">
+    <footer class="bg-purple-darkest text-white py-6 px-4 md:px-8 lg:px-16 text-center rounded-t-xl">
         <div class="max-w-4xl mx-auto">
             <p class="text-sm md:text-base mb-2">&copy; 2025 openjokimaci. All rights reserved.</p>
             <div class="flex justify-center items-center space-x-4">
@@ -239,7 +251,7 @@
     </footer>
 
     <script>
-        // JavaScript for mobile menu toggle
+        // JavaScript for mobile menu toggle functionality
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -249,7 +261,7 @@
 
         mobileMenuButton.addEventListener('click', toggleMobileMenu);
 
-        // Close mobile menu when a link is clicked
+        // Close mobile menu when a navigation link is clicked
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
